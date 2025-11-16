@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* THEME TOKENS */
+:root {
+  /* LIGHT */
+  --bg: #f6f7f9;
+  --text: #0b0b0c;
+  --card: #ffffff;
+  --muted: #4b5563;
+  --border: rgba(0,0,0,.08);
+  --brand: #111111;
+  --brand-ink: #ffffff;
+}
+:root.dark {
+  /* DARK */
+  --bg: #050507;
+  --text: #e8eaed;
+  --card: #0b0d12;
+  --muted: #9aa4b2;
+  --border: rgba(255,255,255,.08);
+  --brand: #0ea5e9;
+  --brand-ink: #0b0b0c;
+}
+html { transition: background-color .25s ease, color .25s ease; }
+body {
+  background:
+    radial-gradient(circle at top left, #020617, #020617),
+    radial-gradient(circle at bottom right, #020617, #000000);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container { @apply max-w-6xl mx-auto px-4; }
+
+.card {
+  background: var(--card);
+  @apply rounded-2xl p-6 shadow-lg border;
+  border-color: var(--border);
+}
+
+.btn {
+  @apply inline-flex items-center gap-2 rounded-xl px-4 py-2 font-medium transition;
+  background: var(--brand);
+  color: var(--brand-ink);
+}
+.btn:hover { filter: brightness(0.95); }
+.btn-outline {
+  @apply inline-flex items-center gap-2 rounded-xl px-4 py-2 font-medium border transition;
+  border-color: var(--border);
+  color: var(--text);
+  background: transparent;
+}
+.btn-outline:hover { background: color-mix(in oklab, var(--text) 6%, transparent); }
+
+.input, textarea.input, input.input {
+  @apply w-full rounded-xl px-4 py-2 focus:outline-none focus:ring-2;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.badge {
+  @apply inline-flex items-center rounded-full px-3 py-1 text-xs;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.link { color: var(--text); text-decoration: none; }
+.link:hover { opacity: .85; }
+
+.section-title { @apply text-2xl font-semibold mb-3; position: relative; }
+.section-title::after {
+  content: ""; position: absolute; left:0; bottom:-6px; width:56px; height:2px;
+  background: var(--brand); border-radius:2px; opacity:.75;
+}
+
+/* Resume paper look (white in dark) */
+.paper { background:#ffffff; color:#111827; @apply rounded-xl p-6;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.06);
+}
+
+* { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+.text-muted { color: var(--muted); }
+.border-theme { border-color: var(--border); }
